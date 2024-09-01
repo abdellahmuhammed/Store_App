@@ -39,9 +39,4 @@ class RatingModel {
   factory RatingModel.fromJson(jsonData) {
     return RatingModel(rate: jsonData['rate'], count: jsonData['count']);
   }
-  @override
-  String toString() {
-    // TODO: implement toString
-    return super.toString();
-  }
 }

@@ -1,7 +1,8 @@
 // ignore_for_file: file_names
 
 import 'package:flutter/material.dart';
-import 'package:store_app/Services/ProductsServices.dart';
+import 'package:store_app/Services/AllCategoriesServices.dart';
+import 'package:store_app/Services/AllProductsServices.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -12,7 +13,8 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          ProductsServices().getAllProducts();
+          AllProductsServices().getAllProducts();
+          AllCategoriesServices().getAllCategories();
         },
         child: const Icon(Icons.add),
       ),
