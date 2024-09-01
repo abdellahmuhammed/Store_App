@@ -14,9 +14,9 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-         AllProductsServices().getAllProducts();
-          AllCategoriesServices().getAllCategories();
-          CategoryServices().getCategory(categoryName: 'jewelery');
+         //AllProductsServices().getAllProducts();
+        //  AllCategoriesServices().getAllCategories();
+         CategoryServices().getCategory(categoryName: 'jewelery');
         },
         child: const Icon(Icons.add),
       ),

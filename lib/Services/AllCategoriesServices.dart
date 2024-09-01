@@ -13,7 +13,7 @@ class AllCategoriesServices {
   log(jsonData.toString());
   return jsonData;
 }else {
-      throw Exception('Error happened in states code ${response.statusCode}');
+      throw Exception('there is problem with states code ${response.statusCode}');
     }
   }
 }
