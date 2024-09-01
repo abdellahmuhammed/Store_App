@@ -1,15 +1,16 @@
+// ignore_for_file: file_names
 
 class ProductsModel {
   final int id;
-  final String tittle;
-  final double price;
+  final String title;
+  final dynamic price;
   final String description;
   final String category;
   final String image;
   final RatingModel rating;
   ProductsModel({
     required this.id,
-    required this.tittle,
+    required this.title,
     required this.price,
     required this.description,
     required this.category,
@@ -20,7 +21,7 @@ class ProductsModel {
   factory ProductsModel.fromJson(jsonData) {
     return ProductsModel(
       id: jsonData['id'],
-      tittle: jsonData['tittle'],
+      title: jsonData['title'],
       price: jsonData['price'],
       description: jsonData['description'],
       category: jsonData['category'],
@@ -31,11 +32,16 @@ class ProductsModel {
 }
 
 class RatingModel {
-  final double rate;
+  final dynamic rate;
   final int count;
 
   RatingModel({required this.rate, required this.count});
   factory RatingModel.fromJson(jsonData) {
     return RatingModel(rate: jsonData['rate'], count: jsonData['count']);
+  }
+  @override
+  String toString() {
+    // TODO: implement toString
+    return super.toString();
   }
 }
