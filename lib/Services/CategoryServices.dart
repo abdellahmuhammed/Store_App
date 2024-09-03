@@ -1,7 +1,7 @@
 // ignore_for_file: file_names
 
 import 'dart:developer';
-import 'package:store_app/constant.dart';
+import 'package:store_app/shared/constant.dart';
 import 'package:store_app/helper/Api.dart';
 import 'package:store_app/models/products.dart';
 
