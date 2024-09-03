@@ -6,7 +6,7 @@ import 'package:store_app/shared/constant.dart';
 import 'package:store_app/helper/Api.dart';
 
 class AllProductsServices {
-  Future<List<dynamic>> getAllProducts() async {
+  Future<List<ProductsModel>> getAllProducts() async {
     List<dynamic> jsonData = await Api().get(url: '$baseUrl/products');
 
     List<ProductsModel> productsList = [];
