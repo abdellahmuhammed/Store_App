@@ -26,11 +26,14 @@ class HomePage extends StatelessWidget {
     return FutureBuilder<List<ProductsModel>>(
       future: AllProductsServices().getAllProducts(),
       builder: (context, snapShot) {
-        if (snapShot.connectionState == ConnectionState.waiting) {
-          log('waiting Connection State is waiting ${snapShot.error.toString()}');
-          return CustomCircularProgressIndicator(
-              messageLoading: 'Waiting your Connection State');
-        } else if (snapShot.hasData && snapShot.data!.isNotEmpty) {
+        // if (snapShot.connectionState == ConnectionState.waiting) {
+        //   log('waiting Connection State is waiting ${snapShot.error.toString()}');
+        //   return CustomCircularProgressIndicator(
+        //       messageLoading: 'Waiting your Connection State');
+        // } else
+
+
+          if (snapShot.hasData && snapShot.data!.isNotEmpty) {
           List<ProductsModel> product = snapShot.data!;
           return _buildDataLoaded(product);
         } else if (snapShot.hasError || snapShot.error == true) {
@@ -54,7 +57,7 @@ class HomePage extends StatelessWidget {
             clipBehavior: Clip.none,
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2,
-                childAspectRatio: .83,
+                childAspectRatio: .90,
                 crossAxisSpacing: 10,
                 mainAxisSpacing: 10),
             itemBuilder: (context, index) {

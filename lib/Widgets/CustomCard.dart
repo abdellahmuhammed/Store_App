@@ -64,10 +64,10 @@ class CustomCard extends StatelessWidget {
           ),
         ),
         Positioned(
-            left: MediaQuery.of(context).size.width * .10,
+            left: MediaQuery.of(context).size.width *.08,
             bottom: 85,
             child: Image(
-                height: 120,
+                height: 100,
                 width: 120,
                 image: NetworkImage(productItem.image))),
       ],
