@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:store_app/Screens/DeitalsProduct.dart';
 import 'package:store_app/models/ProductsModel.dart';
 import 'package:store_app/shared/Component.dart';
 
 class CustomCard extends StatelessWidget {
-  const CustomCard({
+   CustomCard({
     super.key,
     required this.productItem,
   });
@@ -38,20 +39,31 @@ class CustomCard extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       customTextTitle(text: productItem.title),
-                      const Icon(
-                        Icons.favorite,
-                        color: Colors.red,
-                      )
+                     GestureDetector(
+                       onTap: (){
+                       //  ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('for test')));
+                       },
+                       child: const Icon(
+                         Icons.favorite,
+                         color: Colors.red,
+                       ),
+                     )
                     ],
                   ),
-                  customTextSubTitle(text: productItem.description),
+                  InkWell(
+                    onTap: () {
+                      Navigator.pushNamed(context, DetailsProductPage.id,
+                          arguments: productItem);
+                    },
+                    child: customTextSubTitle(text: productItem.description),
+                  ),
                   const SizedBox(
                     height: 6,
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      customTextTitle(text: '${productItem.price}' r'$'),
+                      customTextTitle(text: '${productItem.price}' r' $'),
                       const SizedBox(
                         width: 10,
                       ),
