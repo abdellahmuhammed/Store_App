@@ -102,7 +102,7 @@ class DioHelper {
       if (response.statusCode == 200) {
         // in this case get Request do not Return  data or token, data her i well send.
         log('GET Request:\nURL: $url\nData: $data\nToken: $token');
-        log(response.data.toString());
+        log('GET Request successfully \n Data = ${response.data.toString()}');
         return response.data;
       } else {
         throw Exception(
@@ -126,7 +126,7 @@ class DioHelper {
       final response =
           await dio.post(url, data: data, queryParameters: headers);
       if (response.statusCode == 200) {
-        log(response.data.toString());
+        log('POST Request successfully \n Data = ${response.data.toString()}');
         return response.data;
       } else {
         throw Exception(
@@ -152,7 +152,7 @@ class DioHelper {
       final response = await dio.put(url, data: data, queryParameters: headers);
 
       if (response.statusCode == 200) {
-        log(response.data.toString());
+        log('PUT Request successfully \n Data = ${response.data.toString()}');
         return response.data;
       } else {
         throw Exception(
