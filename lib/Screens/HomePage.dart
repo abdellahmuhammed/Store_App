@@ -1,5 +1,7 @@
 // ignore_for_file: file_names
 
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:store_app/Screens/DeitalsProduct.dart';
 import 'package:store_app/Services/AllProductsServices.dart';
@@ -9,47 +11,65 @@ import 'package:store_app/shared/Component.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
+
   static String id = 'HomePage';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: _buildAppBar(),
-      body: FutureBuilder<List<ProductsModel>>(
-        future: AllProductsServices().getAllProducts(),
-        builder: (context, snapShot) {
-          if (snapShot.hasData && snapShot.data!.isNotEmpty) {
-            List<ProductsModel> product = snapShot.data!;
-            return Padding(
-              padding: const EdgeInsets.all(15.0),
-              child: GridView.builder(
-                physics: const BouncingScrollPhysics(),
-                clipBehavior: Clip.none,
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
-                    childAspectRatio: .9,
-                    crossAxisSpacing: 10,
-                    mainAxisSpacing: 10),
-                itemBuilder: (context, index) {
-                  var productItem = product[index];
-                  return InkWell(
-                    onTap: () {
-                      Navigator.pushNamed(context, DetailsProductPage.id , arguments: productItem
-                      );
-                    },
-                    child: CustomCard(productItem: productItem),
-                  );
-                },
-                itemCount: product.length,
-              ),
-            );
-          } else {
-            return const Center(
-              child: CircularProgressIndicator(),
-            );
-          }
-        },
-      ),
+      body: _buildBodyHomePage(),
     );
+  }
+
+  Widget _buildBodyHomePage() {
+    return FutureBuilder<List<ProductsModel>>(
+      future: AllProductsServices().getAllProducts(),
+      builder: (context, snapShot) {
+        if (snapShot.connectionState == ConnectionState.waiting) {
+          log('waiting Connection State is waiting ${snapShot.error.toString()}');
+          return CustomCircularProgressIndicator(
+              messageLoading: 'Waiting your Connection State');
+        } else if (snapShot.hasData && snapShot.data!.isNotEmpty) {
+          List<ProductsModel> product = snapShot.data!;
+          return _buildDataLoaded(product);
+        } else if (snapShot.hasError || snapShot.error == true) {
+          log('oops There was an error occurred ${snapShot.error.toString()}');
+          return CustomCircularProgressIndicator(
+              messageLoading: 'oops There was an error occurred,try later');
+        } else {
+          log('unexpected error occurred ${snapShot.error.toString()}');
+          return CustomCircularProgressIndicator(
+              messageLoading: 'unexpected error occurred');
+        }
+      },
+    );
+  }
+
+  Padding _buildDataLoaded(List<ProductsModel> product) {
+    return Padding(
+          padding: const EdgeInsets.all(15.0),
+          child: GridView.builder(
+            physics: const BouncingScrollPhysics(),
+            clipBehavior: Clip.none,
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                childAspectRatio: .83,
+                crossAxisSpacing: 10,
+                mainAxisSpacing: 10),
+            itemBuilder: (context, index) {
+              var productItem = product[index];
+              return InkWell(
+                onTap: () {
+                  Navigator.pushNamed(context, DetailsProductPage.id,
+                      arguments: productItem);
+                },
+                child: CustomCard(productItem: productItem),
+              );
+            },
+            itemCount: product.length,
+          ),
+        );
   }
 }
 
@@ -58,7 +78,9 @@ class CustomAny extends StatelessWidget {
     required this.product,
     super.key,
   });
+
   final ProductsModel product;
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -113,9 +135,7 @@ class CustomAny extends StatelessWidget {
 AppBar _buildAppBar() {
   return AppBar(
     elevation: 0.0,
-    title: customTextTitle(text: 'New Trend',fontSize: 30),
-
+    title: customTextTitle(text: 'New Trend', fontSize: 30),
     centerTitle: true,
-
   );
 }
