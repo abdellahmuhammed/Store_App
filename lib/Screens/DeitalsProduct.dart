@@ -1,14 +1,20 @@
-// ignore_for_file: file_names
+// ignore_for_file: file_names, must_be_immutable
 
 import 'package:flutter/material.dart';
 import 'package:store_app/models/ProductsModel.dart';
 
-class DetailsProductPage extends StatelessWidget {
+class DetailsProductPage extends StatefulWidget {
    DetailsProductPage({super.key});
 
   static String id = 'DetailsProductPage';
 
+  @override
+  State<DetailsProductPage> createState() => _DetailsProductPageState();
+}
+
+class _DetailsProductPageState extends State<DetailsProductPage> {
   int number = 0;
+
   @override
   Widget build(BuildContext context) {
     ProductsModel productsModel =
