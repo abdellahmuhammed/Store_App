@@ -7,7 +7,8 @@ class DetailsProductPage extends StatelessWidget {
    DetailsProductPage({super.key});
 
   static String id = 'DetailsProductPage';
-late int number =0;
+
+  int number = 0;
   @override
   Widget build(BuildContext context) {
     ProductsModel productsModel =
