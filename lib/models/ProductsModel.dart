@@ -32,11 +32,6 @@ class ProductsModel {
           : RatingModel.fromJson(jsonData['rating']),
     );
   }
-
-  @override
-  String toString() {
-    return 'ProductsModel(id: $id, title: $title, price: $price, description: $description, category: $category, image: $image, rating: $rating)';
-  }
 }
 
 class RatingModel {
@@ -50,10 +45,5 @@ class RatingModel {
       rate: jsonData['rate'],
       count: jsonData['count'],
     );
-  }
-
-  @override
-  String toString() {
-    return 'RatingModel(rate: $rate, count: $count)';
   }
 }
