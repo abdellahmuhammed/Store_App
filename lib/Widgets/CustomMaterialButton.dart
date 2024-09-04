@@ -5,6 +5,7 @@ class CustomMaterialButton extends StatelessWidget {
   final String text;
   final Color color;
   final double minWidth;
+  final double height;
   final double radius;
   final VoidCallback onTap;
 
@@ -13,6 +14,7 @@ class CustomMaterialButton extends StatelessWidget {
     required this.text,
     this.color = Colors.blueAccent,
     this.minWidth = double.infinity,
+    this.height = 50,
     this.radius = 10,
     required this.onTap,
   });
@@ -23,6 +25,7 @@ class CustomMaterialButton extends StatelessWidget {
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(radius),
       ),
+      height:height ,
       minWidth: minWidth,
       color: color,
       onPressed:onTap ,

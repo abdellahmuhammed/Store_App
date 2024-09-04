@@ -6,7 +6,7 @@ Widget customTextTitle({required String text ,double fontSize = 15}) {
   return Text(
     refactorTitle(title: text),
     maxLines: 1,
-    style: TextStyle(
+    style:  TextStyle(
       fontSize: fontSize,
       fontWeight: FontWeight.bold,
       color: Colors.black,

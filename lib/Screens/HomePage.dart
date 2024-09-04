@@ -3,6 +3,7 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:store_app/Screens/DeitalsProduct.dart';
 import 'package:store_app/Services/AllProductsServices.dart';
 import 'package:store_app/Widgets/CustomCard.dart';
 import 'package:store_app/models/ProductsModel.dart';
@@ -61,8 +62,10 @@ class HomePage extends StatelessWidget {
                 mainAxisSpacing: 10),
             itemBuilder: (context, index) {
               var productItem = product[index];
-              return CustomCard(productItem: productItem);
+              return InkWell(
 
+                child: CustomCard(productItem: productItem),
+              );
             },
             itemCount: product.length,
           ),
