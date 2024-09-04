@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:store_app/Screens/DeitalsProduct.dart';
 import 'package:store_app/Screens/HomePage.dart';
 import 'package:store_app/Screens/UpdateProduct.dart';
 import 'package:store_app/Widgets/CustomCard.dart';
@@ -21,6 +22,7 @@ class StoreApp extends StatelessWidget {
       routes: {
         HomePage.id:(context)=>const HomePage(),
         UpdateProductPage.id : (context)=> UpdateProductPage(),
+        DetailsProductPage.id : (context)=> DetailsProductPage(),
       },
       initialRoute: HomePage.id,
     );

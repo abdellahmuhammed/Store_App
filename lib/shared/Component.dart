@@ -2,12 +2,12 @@
 
 import 'package:flutter/material.dart';
 
-Widget customTextTitle({required String text}) {
+Widget customTextTitle({required String text ,double fontSize = 15}) {
   return Text(
     refactorTitle(title: text),
     maxLines: 1,
-    style: const TextStyle(
-      fontSize: 20,
+    style: TextStyle(
+      fontSize: fontSize,
       fontWeight: FontWeight.bold,
       color: Colors.black,
     ),
@@ -27,7 +27,7 @@ Widget customTextSubTitle({required String text}) {
 String refactorTitle({required String title}) {
   List<String> words = title.split(' ');
   if (words.length > 1) {
-    return '${words[0]} ';
+    return '${words[0]} ${words[1]}';
   } else {
     return title;
   }
