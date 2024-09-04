@@ -3,9 +3,9 @@
 
 import 'package:flutter/material.dart';
 import 'package:store_app/Services/UpdateProductServices.dart';
+import 'package:store_app/Widgets/CustomMaterialButton.dart';
 import 'package:store_app/models/ProductsModel.dart';
-import 'package:store_app/shared/Component/CustomTextFormField.dart';
-import 'package:store_app/shared/Component/jdfd.dart';
+import 'package:store_app/Widgets/CustomTextFormField.dart';
 
 class UpdateProductPage extends StatelessWidget {
   UpdateProductPage({super.key});

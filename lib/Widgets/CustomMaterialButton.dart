@@ -13,7 +13,7 @@ class CustomMaterialButton extends StatelessWidget {
     required this.text,
     this.color = Colors.blueAccent,
     this.minWidth = double.infinity,
-     this.radius = 10, 
+    this.radius = 10,
     required this.onTap,
   });
 

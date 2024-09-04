@@ -5,4 +5,4 @@ String baseUrl='https://fakestoreapi.com';
 final Dio dio = Dio();
 
 Color kIconColor = Colors.black;
-Color kWhiteColor = Colors.white;
+Color kPrimaryColor = Colors.blue;
