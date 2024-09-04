@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:store_app/Screens/DeitalsProduct.dart';
+import 'package:store_app/Widgets/CustomText.dart';
 import 'package:store_app/models/ProductsModel.dart';
-import 'package:store_app/shared/Component.dart';
 
 class CustomCard extends StatelessWidget {
    CustomCard({
@@ -38,7 +38,7 @@ class CustomCard extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      customTextTitle(text: productItem.title),
+                      buildText(text: productItem.title.substring(0 , 15) , fontSize: 18 , maxLines: 1),
                      GestureDetector(
                        onTap: (){
                        //  ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('for test')));
@@ -53,9 +53,9 @@ class CustomCard extends StatelessWidget {
                   InkWell(
                     onTap: () {
                       Navigator.pushNamed(context, DetailsProductPage.id,
-                          arguments: productItem);
+                          arguments: productItem,);
                     },
-                    child: customTextSubTitle(text: productItem.description),
+                    child: buildText(text: productItem.description ,overflow:TextOverflow.ellipsis, fontSize: 15 , maxLines: 2 , fontWeight: FontWeight.normal , color: Colors.grey),
                   ),
                   const SizedBox(
                     height: 6,
@@ -63,11 +63,11 @@ class CustomCard extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      customTextTitle(text: '${productItem.price}' r' $'),
+                      buildText(text: '${productItem.price}' r' $' , fontSize: 18),
                       const SizedBox(
                         width: 10,
                       ),
-                      customTextSubTitle(text: '${productItem.rating!.rate} ⭐'),
+                      buildText(text: '${productItem.rating!.rate} ⭐' , fontSize: 18),
                     ],
                   ),
                 ],

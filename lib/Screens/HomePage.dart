@@ -3,9 +3,9 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
-import 'package:store_app/Screens/DeitalsProduct.dart';
 import 'package:store_app/Services/AllProductsServices.dart';
 import 'package:store_app/Widgets/CustomCard.dart';
+import 'package:store_app/Widgets/CustomText.dart';
 import 'package:store_app/models/ProductsModel.dart';
 import 'package:store_app/shared/Component.dart';
 
@@ -107,21 +107,21 @@ class CustomAny extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                customTextTitle(text: product.title.substring(0, 10)),
+                buildText(text: product.title.substring(0, 10)),
                 const Icon(
                   Icons.favorite,
                   color: Colors.red,
                 ),
               ],
             ),
-            customTextSubTitle(text: product.description),
+            buildText(text: product.description),
             const SizedBox(
               height: 3,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                customTextSubTitle(text: '${product.price}' r'$'),
+                buildText(text: '${product.price}' r'$'),
                 const Icon(Icons.add)
               ],
             )
@@ -135,7 +135,7 @@ class CustomAny extends StatelessWidget {
 AppBar _buildAppBar() {
   return AppBar(
     elevation: 0.0,
-    title: customTextTitle(text: 'New Trend', fontSize: 30),
+    title: buildText(text: 'New Trend', fontSize: 30),
     centerTitle: true,
   );
 }

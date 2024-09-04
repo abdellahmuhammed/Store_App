@@ -2,12 +2,12 @@
 
 import 'package:flutter/material.dart';
 
-Widget customTextTitle({required String text ,double fontSize = 15}) {
+Widget customTextTitle({required String text}) {
   return Text(
     refactorTitle(title: text),
     maxLines: 1,
-    style:  TextStyle(
-      fontSize: fontSize,
+    style: const TextStyle(
+      fontSize: 20,
       fontWeight: FontWeight.bold,
       color: Colors.black,
     ),
