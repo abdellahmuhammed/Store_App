@@ -2,13 +2,13 @@
 
 import 'package:flutter/material.dart';
 
-class DetialsProductPage extends StatelessWidget {
-  const DetialsProductPage({super.key});
+class detailsProductPage extends StatelessWidget {
+  const detailsProductPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return  const Scaffold(
-      
+    return  Scaffold(
+
     );
   }
 }

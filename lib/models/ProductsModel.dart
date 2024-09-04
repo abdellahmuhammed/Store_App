@@ -27,7 +27,9 @@ class ProductsModel {
       description: jsonData['description'],
       category: jsonData['category'],
       image: jsonData['image'],
-      rating: jsonData['rating'] != null ? RatingModel.fromJson(jsonData['rating']) : null,
+      rating: jsonData['rating'] == null
+          ? null
+          : RatingModel.fromJson(jsonData['rating']),
     );
   }
 
