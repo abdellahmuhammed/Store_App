@@ -1,8 +1,8 @@
 // ignore_for_file: file_names, avoid_print
 
 
+import 'package:store_app/Services/DioHelper.dart';
 import 'package:store_app/shared/constant.dart';
-import 'package:store_app/helper/Api.dart';
 import 'package:store_app/models/ProductsModel.dart';
 
 class UpdateProductServices {
@@ -14,7 +14,7 @@ class UpdateProductServices {
     required String image,
     required String category,
   }) async {
-    var jsonData = await Api().update(
+    var jsonData = await DioHelper().update(
       url: '$baseUrl/products/$id',
       data: {
         'title': title,
@@ -23,6 +23,7 @@ class UpdateProductServices {
         'image': image,
         'category': category,
       },
+
       token: null,
     );
     return ProductsModel.fromJson(jsonData);

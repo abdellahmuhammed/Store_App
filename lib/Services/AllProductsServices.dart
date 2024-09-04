@@ -3,11 +3,12 @@
 import 'dart:developer';
 import 'package:store_app/models/ProductsModel.dart';
 import 'package:store_app/shared/constant.dart';
-import 'package:store_app/helper/Api.dart';
+
+import 'DioHelper.dart';
 
 class AllProductsServices {
   Future<List<ProductsModel>> getAllProducts() async {
-    List<dynamic> jsonData = await Api().get(url: '$baseUrl/products');
+    List<dynamic> jsonData = await DioHelper().get(url:'$baseUrl/products');
 
     List<ProductsModel> productsList = [];
     

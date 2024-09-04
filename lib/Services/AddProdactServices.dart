@@ -2,11 +2,11 @@
 
 import 'dart:developer';
 
+import 'package:store_app/Services/DioHelper.dart';
 import 'package:store_app/shared/constant.dart';
-import 'package:store_app/helper/Api.dart';
 import 'package:store_app/models/ProductsModel.dart';
 
-class AddProdactServices {
+class AddProductServices {
   Future<ProductsModel> addProduct({
     required String title,
     required String price,
@@ -15,7 +15,7 @@ class AddProdactServices {
     required String category,
   }) async {
     Map<String, dynamic> response =
-        await Api().post(url: '$baseUrl/products', data: {
+        await DioHelper().post(url: '$baseUrl/products', data: {
       'title':title,
       'price':price,
       'description': description,
