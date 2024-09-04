@@ -14,6 +14,9 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: FloatingActionButton(onPressed: () {
+
+      }),
       backgroundColor: kWhiteColor,
       appBar: buildAppBar(),
       body: FutureBuilder<List<ProductsModel>>(
@@ -30,25 +33,12 @@ class HomePage extends StatelessWidget {
                     crossAxisCount: 2,
                     childAspectRatio: .9,
                     crossAxisSpacing: 10,
-                    mainAxisSpacing: 10),
+                    mainAxisSpacing: 30),
                 itemBuilder: (context, index) {
                   var productItem = product[index];
                   return InkWell(
                     onTap: () { // هنا ببعتهم عشان استقبلهم في ال ًفحة التعديل عشان لو مضافش عنصر اقوله خليه زي ما هو
                       Navigator.pushNamed(context, UpdateProductPage.id , arguments: productItem
-                      
-                      /*
-                      arguments: {
-                      'id':  productItem.id,
-                      'title' : productItem.title,
-                      'price' : productItem.price,
-                      'description':productItem.description,
-                      'image' : productItem.image,
-                       'category': productItem.category,
-                       
-                      } ,*/
-                      
-                      
                        );
                     },
                     child: Stack(
