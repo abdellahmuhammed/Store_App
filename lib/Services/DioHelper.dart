@@ -102,7 +102,8 @@ class DioHelper {
       if (response.statusCode == 200) {
         // in this case get Request do not Return  data or token, data her i well send.
         log('GET Request:\nURL: $url\nData: $data\nToken: $token');
-        return response.data as List<dynamic>;
+        log(response.data.toString());
+        return response.data;
       } else {
         throw Exception(
             'Error: Status code ${response.statusCode}, Message: ${response.statusMessage}');
@@ -125,6 +126,7 @@ class DioHelper {
       final response =
           await dio.post(url, data: data, queryParameters: headers);
       if (response.statusCode == 200) {
+        log(response.data.toString());
         return response.data;
       } else {
         throw Exception(
@@ -150,6 +152,7 @@ class DioHelper {
       final response = await dio.put(url, data: data, queryParameters: headers);
 
       if (response.statusCode == 200) {
+        log(response.data.toString());
         return response.data;
       } else {
         throw Exception(
@@ -162,7 +165,6 @@ class DioHelper {
 
   Map<String, String> _createHeaders({String? token}) {
     final headers = <String, String>{};
-
     headers.addAll({
       'Content-Type': 'application/x-www-form-urlencoded',
       'Accept': 'application/json',
