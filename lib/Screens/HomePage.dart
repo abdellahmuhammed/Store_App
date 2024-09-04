@@ -1,8 +1,8 @@
 // ignore_for_file: file_names
 
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:store_app/Screens/UpdateProduct.dart';
 import 'package:store_app/Services/AllProductsServices.dart';
 import 'package:store_app/models/ProductsModel.dart';
 import 'package:store_app/shared/Component.dart';
@@ -33,66 +33,88 @@ class HomePage extends StatelessWidget {
                     mainAxisSpacing: 10),
                 itemBuilder: (context, index) {
                   var productItem = product[index];
-                  return Stack(
-                    clipBehavior: Clip.none,
-                    children: [
-                      Container(
-                        decoration: BoxDecoration(
-                          boxShadow: [
-                            BoxShadow(
-                              spreadRadius: 1,
-                              blurRadius: 3,
-                              color: Colors.grey.withOpacity(.2),
-                            ),
-                          ],
-                        ),
-                        child: Card(
-                          child: Padding(
-                            padding: const EdgeInsets.all(5.0),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.end,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Row(
-                                  children: [
-                                    customTextTitle(text: productItem.title),
-                                    const Spacer(),
-                                    const Icon(Icons.add),
-                                  ],
-                                ),
-                                customTextSubTitle(
-                                    text: productItem.description),
-                                const SizedBox(
-                                  height: 3,
-                                ),
-                                Row(
-                                  children: [
-                                    customTextTitle(text: '${productItem.price}' r'$'),
-                                    const SizedBox(
-                                      width: 10,
-                                    ),
-                                    customTextSubTitle(text: '${productItem.rating.rate} ⭐'),
-                                    const Spacer(),
-                                    const Icon(
-                                      Icons.favorite,
-                                      color: Colors.red,
-                                    )
-                                  ],
-                                ),
-                              ],
+                  return InkWell(
+                    onTap: () { // هنا ببعتهم عشان استقبلهم في ال ًفحة التعديل عشان لو مضافش عنصر اقوله خليه زي ما هو
+                      Navigator.pushNamed(context, UpdateProductPage.id , arguments: productItem
+                      
+                      /*
+                      arguments: {
+                      'id':  productItem.id,
+                      'title' : productItem.title,
+                      'price' : productItem.price,
+                      'description':productItem.description,
+                      'image' : productItem.image,
+                       'category': productItem.category,
+                       
+                      } ,*/
+                      
+                      
+                       );
+                    },
+                    child: Stack(
+                      clipBehavior: Clip.none,
+                      children: [
+                        Container(
+                          decoration: BoxDecoration(
+                            boxShadow: [
+                              BoxShadow(
+                                spreadRadius: 1,
+                                blurRadius: 3,
+                                color: Colors.grey.withOpacity(.2),
+                              ),
+                            ],
+                          ),
+                          child: Card(
+                            child: Padding(
+                              padding: const EdgeInsets.all(5.0),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.end,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Row(
+                                    children: [
+                                      customTextTitle(text: productItem.title),
+                                      const Spacer(),
+                                      const Icon(Icons.add),
+                                    ],
+                                  ),
+                                  customTextSubTitle(
+                                      text: productItem.description),
+                                  const SizedBox(
+                                    height: 3,
+                                  ),
+                                  Row(
+                                    children: [
+                                      customTextTitle(
+                                          text: '${productItem.price}' r'$'),
+                                      const SizedBox(
+                                        width: 10,
+                                      ),
+                                      customTextSubTitle(
+                                          text: '${productItem.rating!.rate} ⭐'),
+                                      const Spacer(),
+                                      const Icon(
+                                        Icons.favorite,
+                                        color: Colors.red,
+                                      )
+                                    ],
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
                         ),
-                      ),
-                      Positioned(
-                        left: MediaQuery.of(context).size.width * .10,
-                        bottom: 85,
-                        child: Image(
-                          height: 120,
-                          image:  NetworkImage(productItem.image ) ,width: 120,
+                        Positioned(
+                          left: MediaQuery.of(context).size.width * .10,
+                          bottom: 85,
+                          child: Image(
+                            height: 120,
+                            width: 120,
+                            image: NetworkImage(productItem.image),
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   );
                 },
                 itemCount: product.length,

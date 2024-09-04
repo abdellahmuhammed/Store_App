@@ -1,6 +1,6 @@
-// ignore_for_file: file_names
+// ignore_for_file: file_names, avoid_print
 
-import 'dart:developer';
+
 import 'package:store_app/shared/constant.dart';
 import 'package:store_app/helper/Api.dart';
 import 'package:store_app/models/ProductsModel.dart';
@@ -25,9 +25,6 @@ class UpdateProductServices {
       },
       token: null,
     );
-
-    ProductsModel data = ProductsModel.fromJson(jsonData);
-    log(data.toString());
-    return data;
+    return ProductsModel.fromJson(jsonData);
   }
 }

@@ -1,4 +1,6 @@
-// ignore_for_file: file_names
+// ignore_for_file: file_names, avoid_print
+
+import 'dart:developer';
 
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
@@ -17,7 +19,7 @@ class Api {
     }
   }
 
-  Future <dynamic> post({
+  Future<dynamic> post({
     required String url,
     @required dynamic data,
     @required String? token,
@@ -60,9 +62,12 @@ class Api {
     }
     Response response =
         await dio.put(url, data: data, queryParameters: headers);
+    print('url = $url Data = $data , Token=$token ');
 
     if (response.statusCode == 200) {
       Map<String, dynamic> jsonData = response.data;
+    //  print('url = $url Data = $data , Token=$token ');
+      log(jsonData.toString());
       return jsonData;
     } else {
       throw Exception(
