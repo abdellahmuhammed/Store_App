@@ -8,7 +8,6 @@ class CustomCard extends StatelessWidget {
     required this.productItem,
   });
 
-  static String id = 'CustomCard';
   final ProductsModel productItem;
 
   @override
