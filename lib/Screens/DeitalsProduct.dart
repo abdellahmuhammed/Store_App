@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:store_app/Widgets/CustomMaterialButton.dart';
+import 'package:store_app/Widgets/CustomText.dart';
 import 'package:store_app/models/ProductsModel.dart';
 
 class DetailsProductPage extends StatefulWidget {
@@ -16,11 +17,10 @@ class DetailsProductPage extends StatefulWidget {
 class _DetailsProductPageState extends State<DetailsProductPage> {
   int quantity = 0;
 
-
   @override
   Widget build(BuildContext context) {
     final ProductsModel productsModel =
-    ModalRoute.of(context)!.settings.arguments as ProductsModel;
+        ModalRoute.of(context)!.settings.arguments as ProductsModel;
 
     return Scaffold(
       appBar: AppBar(),
@@ -34,14 +34,20 @@ class _DetailsProductPageState extends State<DetailsProductPage> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-         Center(child:  Image.network(
-           productsModel.image,
-           height: MediaQuery.of(context).size.height * 0.30,
-         ),),
+          Center(
+            child: Image.network(
+              productsModel.image,
+              height: MediaQuery.of(context).size.height * 0.30,
+            ),
+          ),
           const SizedBox(height: 10),
-          _buildText(text: productsModel.title,fontWeight: FontWeight.bold),
+          buildText(text: productsModel.title, fontWeight: FontWeight.bold),
           _buildPriceRow(productsModel),
-         _buildText(text: productsModel.description , fontWeight: FontWeight.normal , fontSize:18,color: Colors.grey),
+          buildText(
+              text: productsModel.description,
+              fontWeight: FontWeight.normal,
+              fontSize: 18,
+              color: Colors.grey),
           const SizedBox(height: 10),
           _buildRatingRow(productsModel),
           const Spacer(),
@@ -56,23 +62,6 @@ class _DetailsProductPageState extends State<DetailsProductPage> {
     );
   }
 
-  Text _buildText({
-    required String text ,
-    double fontSize = 25,
-    FontWeight  fontWeight = FontWeight.bold,
-    Color color = Colors.black
-
-
-  }) {
-    return Text(
-          text,
-          style:  TextStyle(
-            fontSize: fontSize,
-            fontWeight: fontWeight,
-            color: color
-          ),
-        );
-  }
   void _incrementQuantity() {
     setState(() {
       quantity += 1;
@@ -90,20 +79,27 @@ class _DetailsProductPageState extends State<DetailsProductPage> {
   Widget _buildPriceRow(ProductsModel productsModel) {
     return Row(
       children: [
-        _buildText(
+        buildText(
             text: productsModel.price.toString() + ' \$',
-          color: Colors.blueGrey,
-          fontSize: 30
-        ),
+            color: Colors.blueGrey,
+            fontSize: 30),
         const Spacer(),
         IconButton(
           onPressed: _incrementQuantity,
-          icon: const Icon(Icons.add,size: 35, ),
+          icon: const Icon(
+            Icons.add,
+            size: 35,
+          ),
         ),
-        _buildText(text: '$quantity', ),
+        buildText(
+          text: '$quantity',
+        ),
         IconButton(
           onPressed: _decrementQuantity,
-          icon: const Icon(Icons.remove , size: 35,),
+          icon: const Icon(
+            Icons.remove,
+            size: 35,
+          ),
         ),
       ],
     );
@@ -112,11 +108,12 @@ class _DetailsProductPageState extends State<DetailsProductPage> {
   Widget _buildRatingRow(ProductsModel productsModel) {
     return Row(
       children: [
-        _buildText(text:'${productsModel.rating!.rate } ⭐ ',
-          fontSize: 30
-        ),
+        buildText(text: '${productsModel.rating!.rate} ⭐ ', fontSize: 30),
         const SizedBox(width: 10),
-        _buildText(text: '(Count: ${productsModel.rating!.count} available)' , color: Colors.grey , fontWeight: FontWeight.normal)
+        buildText(
+            text: '(Count: ${productsModel.rating!.count} available)',
+            color: Colors.grey,
+            fontWeight: FontWeight.normal)
       ],
     );
   }
